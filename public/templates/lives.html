@@ -1,0 +1,14 @@
+Search: <input type="text" ng-model="search.name"><br><br>
+<h3>Existing lives :</h3>
+<ul>
+  <li ng-repeat="live in lives | filter: search">
+    <a ng-show="!editing[$index]" href="#/{{live._id}}">{{live.name}}</a>
+    <button ng-show="!editing[$index]" ng-click="edit($index)">edit</button>
+
+    <input ng-show="editing[$index]" type="text" ng-model="live.name">
+    <button ng-show="editing[$index]" ng-click="update($index)">Update</button>
+    <button ng-show="editing[$index]" ng-click="cancel($index)">Cancel</button>
+    <button ng-show="!editing[$index]" ng-click="remove($index)">remove</button>
+  </li>
+</ul>
+New live <input type="text" ng-model="newLive"><button ng-click="save()">Create</button>
