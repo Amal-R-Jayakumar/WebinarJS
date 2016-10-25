@@ -1,5 +1,32 @@
 <h1>{{ live.name }}</h1>
+<button ng-show="!editing" ng-click="edit()">Edit</button>
+<button ng-show="editing" ng-click="update()">Update</button>
+<button ng-show="editing" ng-click="cancel()">Cancel</button>
+<button ng-show="!editing" ng-click="remove()">Remove</button>
 
-<button ng-click="update()">Update</button>
-<button ng-click="remove()">Remove</button>
-<a href="/">Cancel</a>
+<p>
+	<b>Titre: </b>
+	<span ng-show="!editing">{{ live.name }}</span>
+	<input ng-show="editing" type="text" ng-model="live.name">
+</p>
+<p>
+	<b>Youtube ID: </b>
+	<span ng-show="!editing">{{ live.youtube || 'Non spécifié' }}</span>
+	<input ng-show="editing" type="text" ng-model="live.youtube">
+</p>
+<p>
+	<b>Date: </b>
+	<span ng-show="!editing">{{ live.date }}</span>
+	<input ng-show="editing" type="datetime-local" ng-model="live.date">
+	{{jsdate}}
+</p>
+<p>
+	<b>Lien atelier: </b>
+	<span ng-show="!editing"><a href="{{ live.atelier }}" target="_blank">{{ live.atelier }}</a></span>
+	<input ng-show="editing" type="text" ng-model="live.atelier">
+</p>
+<p>
+	<b>Lien profilage: </b>
+	<span ng-show="!editing"><a href="{{ live.profilage }}" target="_blank">{{ live.profilage }}</a></span>
+	<input ng-show="editing" type="text" ng-model="live.profilage">
+</p>

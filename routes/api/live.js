@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var Live = require('../models/Live.js');
+var Live = require('../../models/Live.js');
 
 /* GET /live listing. */
 router.get('/', function(req, res, next) {

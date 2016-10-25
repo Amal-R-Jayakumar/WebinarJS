@@ -5,8 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
-var live = require('./routes/live');
+var admin = require('./routes/admin');
+var apiLive = require('./routes/api/live');
 
 // load mongoose package
 var mongoose = require('mongoose');
@@ -33,8 +33,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/live', live);
+app.use('/admin/', admin);
+app.use('/api/live', apiLive);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
