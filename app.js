@@ -15,9 +15,13 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 // connect to MongoDB
-mongoose.connect('mongodb://localhost/webinar')
-  .then(() =>  console.log('connection succesful'))
-  .catch((err) => console.error(err));
+mongoose.connect('mongodb://localhost/webinar', function(err) {
+  if(err) {
+    console.log('\nError when try to connect to db', err);
+  } else {
+    console.log('\nConnection to db successful');
+  }
+});
 
 var app = express();
 
