@@ -1,4 +1,15 @@
-var app = angular.module('app', ['ngRoute', 'ngResource']);
+var app = angular.module('app', ['ngRoute', 'ngResource', 'angularMoment']);
+
+app.directive("formatDate", function(){
+  return {
+   require: 'ngModel',
+    link: function(scope, elem, attr, LiveDetailCtrl) {
+      LiveDetailCtrl.$formatters.push(function(modelValue){
+        return new Date(modelValue);
+      });
+    }
+  };
+});
 
 //---------------
 // Services
@@ -20,23 +31,27 @@ app.controller('LiveController', ['$scope', 'LiveFactory', function ($scope, Liv
 
   $scope.save = function(){
     if(!$scope.newLive.name || $scope.newLive.name.length < 5) return;
-    var live = new LiveFactory({ name: $scope.newLive.name, youtube: $scope.newLive.youtube });
+    var live = new LiveFactory({ name: $scope.newLive.name, youtube: $scope.newLive.youtube, youtubeLink: "https://www.youtube.com/embed/" + $scope.newLive.youtube + "?showinfo=0&autoplay=1" });
 
     live.$save(function(){
       $scope.lives.push(live);
-              $scope.newLive = ''; // clear textbox
-            });
+      $scope.newLive = ''; // clear textbox
+    });
   };
 }]);
 
-app.controller('LiveDetailCtrl', ['$scope', '$routeParams', 'LiveFactory', '$location', function ($scope, $routeParams, LiveFactory, $location) {
+app.controller('LiveDetailCtrl', ['$scope', '$routeParams', 'LiveFactory', '$location', 'amMoment', function ($scope, $routeParams, LiveFactory, $location) {
+  
   $scope.live = LiveFactory.get({id: $routeParams.id });
+
 
   $scope.edit = function(){
     $scope.editing = angular.copy($scope.live);
   };
 
   $scope.update = function(){
+    $scope.live.displayDate = moment($scope.live.date).format('dddd DD MMMM YYYY HH:MM');
+    $scope.live.displayDate = $scope.live.displayDate[0].toUpperCase() + $scope.live.displayDate.slice(1);
     LiveFactory.update({id: $scope.live._id}, $scope.live);
     $scope.editing = false;
   };
@@ -50,4 +65,12 @@ app.controller('LiveDetailCtrl', ['$scope', '$routeParams', 'LiveFactory', '$loc
       window.location = "../admin";
     });
   };
+
+  $scope.accessLive = function(){
+      window.location = "/live#/" + $scope.live._id;
+  };
 }]);
+
+app.run(function(amMoment) {
+  amMoment.changeLocale('fr');
+});

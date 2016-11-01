@@ -3,6 +3,7 @@
 <button ng-show="editing" ng-click="update()">Update</button>
 <button ng-show="editing" ng-click="cancel()">Cancel</button>
 <button ng-show="!editing" ng-click="remove()">Remove</button>
+<button ng-show="!editing" ng-click="accessLive()">Go to the live</button>
 
 <p>
 	<b>Titre: </b>
@@ -16,8 +17,8 @@
 </p>
 <p>
 	<b>Date: </b>
-	<span ng-show="!editing">{{ live.date }}</span>
-	<input ng-show="editing" type="datetime-local" ng-model="live.date">
+	<span ng-show="!editing">{{ live.displayDate }}</span>
+	<input ng-show="editing" type="datetime-local" ng-model="live.date" format-date>
 	{{jsdate}}
 </p>
 <p>

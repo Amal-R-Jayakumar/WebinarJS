@@ -1,12 +1,12 @@
 app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider
   .when('/', {
-    templateUrl: 'templates/lives.html',
+    templateUrl: 'templates/admin/lives.html',
     controller: 'LiveController'
   })
 
   .when('/:id', {
-    templateUrl: 'templates/liveDetails.html',
+    templateUrl: 'templates/admin/liveDetails.html',
     controller: 'LiveDetailCtrl'
   });
 }]);

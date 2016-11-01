@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var admin = require('./routes/admin');
+var live = require('./routes/live');
 var apiLive = require('./routes/api/live');
 
 // load mongoose package
@@ -39,6 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/admin/', admin);
 app.use('/api/live', apiLive);
+app.use('/live', live);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
