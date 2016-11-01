@@ -1,4 +1,4 @@
-# ngWebinar - A LEAN stack webinar
+# ngWebinar - A MEAN stack webinar
 
 [![Build Status](https://ci.sherlockstd.io/buildStatus/icon?job=lpfe-webinar-mean)](https://ci.sherlockstd.io/job/lpfe-webinar-mean/)
 
