@@ -66,6 +66,10 @@ app.controller('LiveDetailCtrl', ['$scope', '$routeParams', 'LiveFactory', '$loc
     });
   };
 
+  $scope.back = function(){
+    window.location = "../admin";
+  }
+
   $scope.accessLive = function(){
       window.location = "/live#/" + $scope.live._id;
   };
