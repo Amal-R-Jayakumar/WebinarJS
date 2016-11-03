@@ -3,9 +3,6 @@ Search: <input type="text" ng-model="search.name"><br><br>
 <ul>
 	<li ng-repeat="live in lives | filter: search">
 		<a ng-show="!editing[$index]" href="#/{{live._id}}">{{live.name}}</a>
-		<button ng-show="editing[$index]" ng-click="update($index)">Update</button>
-		<button ng-show="editing[$index]" ng-click="cancel($index)">Cancel</button>
-		<button ng-show="!editing[$index]" ng-click="remove($index)">remove</button>
 	</li>
 </ul>
 <h3>New Live</h3>
