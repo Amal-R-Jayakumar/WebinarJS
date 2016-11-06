@@ -62,12 +62,12 @@ app.controller('LiveDetailCtrl', ['$scope', '$routeParams', 'LiveFactory', '$loc
 
   $scope.remove = function(){
     LiveFactory.remove({id: $scope.live._id}, function(){
-      window.location = "../admin";
+      window.location = "../admin#/";
     });
   };
 
   $scope.back = function(){
-    window.location = "../admin";
+    window.location = "../admin#/";
   };
 
   $scope.accessLive = function(){
