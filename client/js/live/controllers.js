@@ -1,4 +1,4 @@
-app.controller('LiveDisplayCtrl', ['$scope', '$routeParams', 'LiveFactory', 'ChatFactory', '$location', function ($scope, $routeParams, LiveFactory, ChatFactory, $location, $sce) {
+app.controller('LiveDisplayCtrl', ['$scope', '$routeParams', 'LiveFactory', 'ChatFactory', 'socket', '$location', function ($scope, $routeParams, LiveFactory, ChatFactory, socket, $location, $sce) {
   $scope.live = LiveFactory.get({ id: $routeParams.id });
 
   $scope.messages = {};
@@ -14,5 +14,7 @@ app.controller('LiveDisplayCtrl', ['$scope', '$routeParams', 'LiveFactory', 'Cha
       $scope.newMessage = ''; // clear textbox
     });
   };
-  var socket = io();
+  socket.on('messages', function (messages, $scope) {
+    console.log(messages);
+  });
 }]);

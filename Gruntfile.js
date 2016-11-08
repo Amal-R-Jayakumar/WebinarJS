@@ -103,8 +103,7 @@
     			client: {
       				files: {
         				'public/js/admin.min.js': ['public/js/admin.js'],
-        				'public/js/live.min.js': ['public/js/live.js'],
-						'public/js/lib/socket.min.js': ['public/js/lib/socket.js']
+        				'public/js/live.min.js': ['public/js/live.js']
       				}
     			}
   			},

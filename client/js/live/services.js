@@ -7,3 +7,7 @@ app.factory('ChatFactory', ['$resource', function($resource){
     'update': { method:'PUT' }
   });
 }]);
+
+app.factory('socket', function (socketFactory) {
+  return socketFactory();
+});
