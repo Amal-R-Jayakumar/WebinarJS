@@ -1,6 +1,6 @@
 {
-  "name": "ngWebinar",
-  "version": "0.0.1",
+  "name": "WebinarJS",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -21,9 +21,14 @@
     "angular-resource": "^1.5.8",
     "angular-route": "^1.5.8",
     "grunt": "^1.0.1",
+    "grunt-banner": "^0.6.0",
     "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^1.0.2",
     "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-ng-annotate": "^3.0.0",
     "moment": "^2.15.2",
     "moment-locale-fr": "^1.0.0"
   }
