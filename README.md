@@ -6,13 +6,25 @@ A webinar (online live and replay) engine built on MEAN stack.
 
 # Installation
 
-You just need to install dependencies:
+Clone project repo:
+
+```bash
+git clone https://git.sherlockstd.io/SherlockStd/WebinarJS.git
+```
+
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-And start the program
+Then build the client side:
+
+```bash
+grunt build
+```
+
+And start the express server:
 
 ```bash
 npm start
