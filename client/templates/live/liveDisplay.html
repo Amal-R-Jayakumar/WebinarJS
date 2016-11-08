@@ -2,17 +2,19 @@
 	<div id='videoDescription'>
 		<h1>{{ live.name }}</h1>
 	</div>
-	<iframe id='video' type='text/html' ng-src='{{ "https://www.youtube.com/embed/" + live.youtube + "?showinfo=0&autoplay=1" }}' allowfullscreen frameborder='0'></iframe>
+	<iframe id='video' type='text/html' ng-src='{{ "https://www.youtube.com/embed/" + live.youtube + "?showinfo=0&autoplay=1" }}'
+					allowfullscreen frameborder='0'></iframe>
 </div>
-
 <div id='mainRightDiv'>
 	<div id='chat'>
 		<div id='chatLog'>
-            <li ng-repeat="message in messages">
+			<span ng-repeat="message in messages">
 		        <p>{{ message.content }}</p>
-	        </li>
-        </div>
-        Message: <input id='chatMessageTextArea' placeholder='Envoyer un message.' type="text" ng-model="newMessage.content"><br>
-        <button ng-click="save()">Create</button>
+		</div>
+		</span>
+		<div>
+		<input id='chatMessageTextArea' placeholder='Send a message.' type="text" ng-model="newMessage.content"><br>
+		<button ng-click="sendMessage()">Send</button>
+		</div>
 	</div>
 </div>
