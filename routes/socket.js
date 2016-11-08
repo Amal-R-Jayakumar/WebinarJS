@@ -14,10 +14,8 @@ var foo = (function () {
 
 // export function for listening to the socket
 module.exports = function (socket) {
-  socket.on('connection', function (socket) {
-    console.log('a user connected');
-    socket.on('disconnect', function () {
-        console.log('user disconnected');
-    });
-});
+  console.log('a user connected');
+  socket.on('disconnect', function () {
+    console.log('a user disconnected');
+  });
 };
