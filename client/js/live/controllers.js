@@ -6,7 +6,7 @@ app.controller('LiveDisplayCtrl', ['$scope', '$routeParams', 'LiveFactory', 'Cha
   $scope.messages = ChatFactory.query({ thread: $routeParams.id });
 
   $scope.save = function(){
-    if(!$scope.newMessage.user || !$scope.newMessage.content) return;
+    if(!$scope.newMessage.content) return;
     var message = new ChatFactory({ user: $scope.newMessage.user, content: $scope.newMessage.content, thread: $routeParams.id });
 
     message.$save(function(){
