@@ -8,6 +8,11 @@
 			},
 
 
+			clean: [
+				'public/'
+			],
+
+
 			copy: {
 				jslib: {
 					files: [
@@ -42,50 +47,29 @@
 
 			},
 
-
-			clean: [
-				'public/'
-			],
-
-
-			cssmin: {
-  				client: {
-    				files: [{
-      				expand: true,
-      				cwd: 'client/css',
-      				src: ['*.css', '!*.min.css'],
-      				dest: 'public/css',
-      				ext: '.min.css'
-    				}]
-  				}
-			},
-
-
-			usebanner: {
-    			client: {
-      				options: {
-        				position: 'top',
-        				banner: '/*\n<%= pkg.name %> v<%= pkg.version %>\nhttps://git.sherlockstd.io/SherlockStd/WebinarJS\n*/\n',
-        				linebreak: true
-      				},
-      				files: {
-        				src: [ 'public/js/**/*.min.js', '!public/js/lib/*.*', 'public/css/*.min.css' ]
-      				}
-    			}
-  			},
-
-
 			ngAnnotate: {
     			options: {
         			singleQuotes: true
     			},
-    			app: {
-        			files: {
-            			'public/js/admin/admin.js': ['client/js/admin/admin.js'],
-        				'public/js/admin/router.js': ['client/js/admin/router.js'],
-        				'public/js/live/live.js': ['client/js/live/live.js'],
-        				'public/js/live/router.js': ['client/js/live/router.js']
-					}
+    			ngAdmin: {
+        			files: [{
+            			expand: true,
+            			cwd: 'client/js/admin',
+            			src: ['*.js'],
+            			dest: 'public/js/admin',
+            			ext: '.js',
+            			extDot: 'last'
+        			}]
+    			},
+				ngLive: {
+        			files: [{
+            			expand: true,
+            			cwd: 'client/js/live',
+            			src: ['*.js'],
+            			dest: 'public/js/live',
+            			ext: '.js',
+            			extDot: 'last'
+        			}]
     			}
 			},
 
@@ -102,11 +86,39 @@
 			},
 
 
+			cssmin: {
+  				client: {
+    				files: [{
+      				expand: true,
+      				cwd: 'client/css',
+      				src: ['*.css', '!*.min.css'],
+      				dest: 'public/css',
+      				ext: '.min.css'
+    				}]
+  				}
+			},
+
+
 			uglify: {
     			client: {
       				files: {
         				'public/js/admin.min.js': ['public/js/admin.js'],
         				'public/js/live.min.js': ['public/js/live.js'],
+						'public/js/lib/socket.min.js': ['public/js/lib/socket.js']
+      				}
+    			}
+  			},
+
+
+			usebanner: {
+    			client: {
+      				options: {
+        				position: 'top',
+        				banner: '/*\n<%= pkg.name %> v<%= pkg.version %>\nhttps://git.sherlockstd.io/SherlockStd/WebinarJS\n*/\n',
+        				linebreak: true
+      				},
+      				files: {
+        				src: [ 'public/js/**/*.min.js', '!public/js/lib/*.*', 'public/css/*.min.css' ]
       				}
     			}
   			}
