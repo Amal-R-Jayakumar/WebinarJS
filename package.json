@@ -17,9 +17,14 @@
   },
   "devDependencies": {
     "angular": "^1.5.8",
+    "angular-moment": "^1.0.0",
     "angular-resource": "^1.5.8",
     "angular-route": "^1.5.8",
     "grunt": "^1.0.1",
-    "grunt-contrib-jshint": "^1.0.0"
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "moment": "^2.15.2",
+    "moment-locale-fr": "^1.0.0"
   }
 }
