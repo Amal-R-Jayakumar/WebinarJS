@@ -1,6 +1,6 @@
 # ngWebinar - A MEAN stack webinar
 
-[![Build Status](https://ci.sherlockstd.io/buildStatus/icon?job=lpfe-webinar-mean)](https://ci.sherlockstd.io/job/lpfe-webinar-mean/)
+[![Build Status](https://ci.sherlockstd.io/buildStatus/icon?job=WebinarJS)](https://ci.sherlockstd.io/job/WebinarJS/)
 
 A webinar (online live and replay) engine built on MEAN stack.
 
