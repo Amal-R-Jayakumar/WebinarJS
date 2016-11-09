@@ -33,7 +33,9 @@
 
 				img: {
     				files: [
-						{src: ['client/img/header.jpg'], dest: 'public/img/header.jpg'}
+						{src: ['client/img/header.jpg'], dest: 'public/img/header.jpg'},
+						{src: ['client/img/chat.svg'], dest: 'public/img/chat.svg'},
+						{src: ['client/img/group.svg'], dest: 'public/img/group.svg'}
 					]
 				},
 

@@ -4,7 +4,8 @@ var ChatSchema = new mongoose.Schema({
 	user: String,
     content: String,
 	thread: String,
-	date: { type: Date, default: new Date() }
+	hour: String,
+	minutes: String
 });
 
 module.exports = mongoose.model('Chat', ChatSchema);

@@ -1,8 +1,9 @@
-html, body {
+html,
+body {
     height: 100%;
     text-align: center;
     background-color: #EFEFEF;
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 300;
     margin: 0;
     padding: 0;
@@ -54,15 +55,175 @@ html, body {
 #chat {
     width: calc(100% - 30px);
     height: calc(100% - 40px);
-    padding: 20px 15px;
+    padding: 10px 0px 10px 15px;
 }
 
 #chatLog {
-    height: calc(100% - 75px);
+    max-height: calc(100% - 105px);
+    overflow-y: scroll;
+    padding-right: 0px;
 }
 
 #chatMessageTextArea {
     width: calc(100% - 6px);
     height: 50px;
-    resize: none;
+}
+
+#chatHeader {
+    display:table;
+    width: auto;
+    max-height: 5%;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+#chatHeader img {
+    height: 30px;
+    width: auto;
+}
+
+#chatHeader p {
+    vertical-align: middle;
+    display: table-cell;
+    padding-left: 5px;
+}
+
+.chat {
+    list-style: none;
+    background: none;
+    margin: 0;
+    margin-right: -15px;
+    margin-left: -5px;
+    padding: 0;
+}
+
+.chat li {
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+}
+
+.msg {
+    background: white;
+    width: 100%;
+    padding: 10px;
+    border: 1px #EFEFEF solid;
+    border-radius: 2px;
+    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.07);
+}
+
+.msg p {
+    font-size: 0.8rem;
+    margin: 0 0 0.2rem 0;
+    color: #777;
+}
+
+.msg time {
+    font-size: 0.7rem;
+    color: #ccc;
+    margin-top: 3px;
+    float: right;
+    cursor: default;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.overlay {
+	text-align: center;
+	background-color: #5DBFDF !important;
+	position: fixed;
+	z-index: 7371832;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	overflow-x: auto;
+	overflow-y: scroll;
+	display: table;
+
+}
+.overlay .center {
+	display: table-cell;
+	vertical-align: middle;
+	table-layout: fixed;
+	max-width: 850px;
+	width: 100%;
+}
+.overlay .center .title {
+	display: inline-block;
+	font-size: 48px;
+	color: #fff;
+	width: 100%;
+	margin-bottom: 40px;
+	letter-spacing: 1px;
+	text-align: center;
+	font-weight: 900;
+}
+.overlay .center .desc {
+	display: inline-block;
+	font-size: 30px;
+	line-height: 1.25;
+	color: #fff;
+	width: 100%;
+	margin-bottom: 40px;
+	text-align: center;
+}
+.overlay .center .form-wrap {
+	text-align: center;
+}
+.overlay .center button {
+	padding: 0;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	font-weight: 600;
+	font-size: 20px;
+	outline: none;
+	border: 1px solid transparent;
+	line-height: 1;
+	max-width: 500px;
+	width: 100%;
+	height: 58px;
+	margin: 0;
+}
+.overlay .center .button-yes {
+	padding: 0;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	font-weight: 600;
+	font-size: 20px;
+	outline: none;
+	border: 1px solid transparent;
+	line-height: 1;
+	max-width: 500px;
+	width: 100%;
+	height: 58px;
+	margin: 0;
+	color: rgb(250, 250, 250);
+	background: #ffab23 none repeat scroll 0% 0%;
+	margin-bottom: 15px;
+	cursor:pointer;
+}
+.overlay .center .button-no {
+	color: rgb(217, 217, 217);
+	background: rgb(148, 148, 148) none repeat scroll 0% 0%;
+	border-color: rgb(148, 148, 148);
+}
+.overlay .center input {
+	color: rgb(34, 34, 34);
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	font-size: 20px;
+	border: 1px solid transparent;
+	padding: 0px 25px;
+	max-width: 448px;
+	width: 100%;
+	height: 60px;
+	margin: 0 auto 10px;
 }

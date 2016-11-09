@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('live/live', { title: 'ngWebinar Live' });
+  res.render('live/live', { title: 'WebinarJS' });
 });
 
 module.exports = router;

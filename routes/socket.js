@@ -10,7 +10,9 @@ module.exports.listen = function (app) {
   var connected = 0;
 
   io.sockets.on('connection', function (socket) {
-    io.sockets.emit('init', 'init data');
+    connected++;
+    console.log(connected + " clients connected");
+    io.sockets.emit('init', connected);
 
     socket.on('get:messages', function (thread) {
       Chat.find({
@@ -20,12 +22,10 @@ module.exports.listen = function (app) {
       });
     });
 
-    connected++;
-    console.log(connected + " clients connected");
-
     socket.on('disconnect', function () {
       connected--;
       console.log(connected + " clients connected");
+      io.sockets.emit('init', connected);
     });
 
     socket.on('send:message', function (message) {
