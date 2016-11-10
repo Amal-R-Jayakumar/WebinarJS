@@ -12,7 +12,7 @@ module.exports.listen = function (app) {
   io.sockets.on('connection', function (socket) {
     connected++;
     console.log(connected + " clients connected");
-    io.sockets.emit('init', connected);
+    io.sockets.emit('nbUsers', connected);
 
     socket.on('get:messages', function (thread) {
       Chat.find({

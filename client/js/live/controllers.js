@@ -8,9 +8,9 @@ app.controller('LiveDisplayCtrl', ['$scope', '$routeParams', 'LiveFactory', 'Cha
 
   // Socket listeners
 
-  socket.on('init', function (nbParticipants) {
-    $scope.nbParticipants = nbParticipants;
-    console.log(nbParticipants);
+  socket.on('nbUsers', function (nbUsers) {
+    $scope.nbUsers = nbUsers;
+    console.log(nbUsers);
   });
 
   socket.emit('get:messages', $routeParams.id);
