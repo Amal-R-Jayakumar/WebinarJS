@@ -7,11 +7,11 @@
 </div>
 <div id='mainRightDiv'>
 	<div id='chat'>
-		<div id="chatHeader">
+		<div class="chatHeader">
 			<img src="/img/group.svg">
 			<p>{{ nbParticipants || '0' }} participants</p>
 		</div>
-		<ol class="chat" id="chatLog">
+		<ol class="chat">
 			<li ng-repeat="message in messages | reverse">
 				<div class="msg">
 					<time>{{ message.user }}</time>
