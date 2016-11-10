@@ -6,7 +6,7 @@
 					allowfullscreen frameborder='0'></iframe>
 </div>
 <div id='mainRightDiv'>
-	<div id='chat'>
+	<div class='chatContainer'>
 		<div class="chatHeader">
 			<img src="/img/group.svg">
 			<p>{{ nbParticipants || '0' }} participants</p>
@@ -20,14 +20,12 @@
 				</div>
 			</li>
 		</ol>
-		<div>
-			<input ng-show='!userOk' id='chatMessageTextArea' placeholder='Type your username.' type="text" ng-model="newMessage.user"><br>
-			<input id='chatMessageTextArea' placeholder='Send a message.' type="text" ng-model="newMessage.content"><br>
-			<button ng-click="sendMessage()">Send</button>
+		<div class="textDiv">
+			<input class='chatText' placeholder='Send a message.' type="text" ng-model="newMessage.content"><br>
+			<button class='chatButton' ng-click="sendMessage()">Send</button>
 		</div>
 	</div>
 </div>
-
 <div class="overlay" ng-show='!userOk'>
 	<div class="center">
 		<div class="title">WebinarJS</div>
@@ -35,8 +33,8 @@
 			Renseignez un nom d'utilisateur pour accéder au live
 		</div>
 		<div class="form-wrap">
-				<input type="text" ng-model="newMessage.user" placeholder="Entrez votre nom d'utilisateur ici"><br />
-				<button class="button-yes" ng-click="claimUsername()">Entrer !</button>
+			<input type="text" ng-model="newMessage.user" placeholder="Entrez votre nom d'utilisateur ici"><br />
+			<button class="button-yes" ng-click="claimUsername()">Entrer !</button>
 			</form>
 		</div>
 	</div>
