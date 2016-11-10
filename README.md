@@ -18,6 +18,13 @@ Install dependencies:
 npm install
 ```
 
+Launch MongoDB daemon :
+
+```bash
+sudo mongod &>/dev/null &
+```
+
+
 Then build the client side:
 
 ```bash
