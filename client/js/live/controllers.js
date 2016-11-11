@@ -5,19 +5,36 @@ app.controller('LiveDisplayCtrl', ['$scope', '$routeParams', 'LiveFactory', 'Cha
   });
 
   $scope.messages = {};
+  $scope.youtubeLink = "";
+
+
+  // Send init request to server
+
+  socket.emit('init', $routeParams.id);
+
 
   // Socket listeners
 
-  socket.on('nbUsers', function (nbUsers) {
-    $scope.nbUsers = nbUsers;
-    console.log(nbUsers);
+  socket.on('validate:username', function (data) {
+    if (data == 'userFree') {
+      socket.emit('user:connected');
+      $scope.userOk = 1;
+      $scope.live.youtubeLink = "https://www.youtube.com/embed/" + $scope.live.youtube + "?showinfo=0&autoplay=1";
+    } else {
+      alert("Username already taken.");
+    }
   });
-
-  socket.emit('get:messages', $routeParams.id);
 
   socket.on('get:messages', function (messages) {
     $scope.messages = messages;
 
+  });
+
+  socket.on('nbUsers', function (data) {
+    if (data.thread == $routeParams.id) {
+      $scope.nbUsers = data.nbUsers;
+      console.log(data.nbUsers);
+    }
   });
 
   socket.on('send:message', function (message) {
@@ -30,12 +47,13 @@ app.controller('LiveDisplayCtrl', ['$scope', '$routeParams', 'LiveFactory', 'Cha
   $scope.claimUsername = function () {
     $scope.userOk = 0;
 
-    console.log($scope.newMessage.user);
-
-    if ($scope.newMessage.user) {
-      $scope.userOk = 1;
+    if ($scope.username.length >= 5) {
+      socket.emit('claim:username', {
+        user: $scope.username,
+        thread: $routeParams.id
+      });
     } else {
-      $scope.userOk = 0;
+      alert('Your username should contain at least 5 characters');
     }
   };
 
@@ -43,15 +61,15 @@ app.controller('LiveDisplayCtrl', ['$scope', '$routeParams', 'LiveFactory', 'Cha
 
     if ($scope.userOk == 1) {
       socket.emit('send:message', {
-        user: $scope.newMessage.user,
-        content: $scope.newMessage.content,
-        hour: new Date().getHours().toString(),
-        minutes: new Date().getMinutes().toString(),
-        thread: $routeParams.id
+        'user': $scope.username,
+        'content': $scope.newMessage.content,
+        'hour': new Date().getHours().toString(),
+        'minutes': new Date().getMinutes().toString(),
+        'thread': $routeParams.id
       });
 
       $scope.messages.push({
-        user: $scope.newMessage.user,
+        user: $scope.username,
         content: $scope.newMessage.content,
         hour: new Date().getHours().toString(),
         minutes: new Date().getMinutes().toString(),

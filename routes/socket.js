@@ -1,20 +1,24 @@
 var socketio = require('socket.io');
+var Live = require('../models/Live.js');
 var Chat = require('../models/Chat.js');
-
-var thread = "581cc1d5a979f36f0fd018f5";
-console.log(thread);
+var User = require('../models/User.js');
 
 module.exports.listen = function (app) {
   io = socketio.listen(app);
+  var userLogged = 0;
+  var connected = [];
 
-  var connected = 0;
+  Live.distinct('_id', function (error, threads) {
+    threads.forEach(function (thread) {
+      connected[thread] = 0;
+    }, this);
+  });
 
   io.sockets.on('connection', function (socket) {
-    connected++;
-    console.log(connected + " clients connected");
-    io.sockets.emit('nbUsers', connected);
+    var webinarid = "";
 
-    socket.on('get:messages', function (thread) {
+    socket.on('init', function (thread) {
+      webinarid = thread;
       Chat.find({
         'thread': thread
       }, function (err, messages) {
@@ -22,18 +26,53 @@ module.exports.listen = function (app) {
       });
     });
 
-    socket.on('disconnect', function () {
-      connected--;
-      console.log(connected + " clients connected");
-      io.sockets.emit('init', connected);
+    socket.on('claim:username', function (data) {
+      User.find(data, function (err, user) {
+        if (user.length) {
+          console.log('[' + data.thread + '] Username already taken');
+          socket.emit('validate:username', 'userTaken');
+        } else {
+          User.create(data, function (err, success) {
+            if (err) return next(err);
+            console.log('[' + data.thread + '] New user : ' + success.user);
+            socket.emit('validate:username', 'userFree');
+            connected[data.thread]++;
+            console.log('[' + data.thread + '] ' + connected[data.thread] + " clients connected");
+            io.sockets.emit('nbUsers', {
+              'nbUsers': connected[data.thread],
+              'thread': data.thread
+            });
+            userLogged = 1;
+          });
+        }
+      });
     });
 
     socket.on('send:message', function (message) {
       Chat.create(message, function (err, success) {
         if (err) return next(err);
-        console.log('New message : ' + success);
+        console.log('[' + success.thread + '] New message : ' + success);
       });
       socket.broadcast.emit('send:message', message);
+    });
+
+    socket.on('update:lives', function () {
+      Live.distinct('_id', function (error, threads) {
+        threads.forEach(function (thread) {
+          connected[thread] = 0;
+        }, this);
+      });
+    });
+
+    socket.on('disconnect', function () {
+      if (userLogged) {
+        connected[webinarid]--;
+      }
+      console.log('[' + webinarid + '] ' + connected[webinarid] + " clients connected");
+      io.sockets.emit('nbUsers', {
+        'nbUsers': connected[webinarid],
+        'thread': webinarid
+      });
     });
   });
 
