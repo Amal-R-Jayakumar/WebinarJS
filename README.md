@@ -13,7 +13,7 @@ A clone of WebinarJam built on MEAN stack (MongoDB, ExpressJS, AngularJS, NodeJS
 # Todo
 - [ ] Homepage with upcoming webinars and replay
 - [ ] Display important info on top of chat
-- [ ] Every attendees have a unique link
+- [ ] Every attendees have a unique link
 - [ ] Registration page remember the name of attendees and use them for the chat
 - [ ] Translations
 - [ ] Presenters infos (Name, Mail, Photo, etc ...)
