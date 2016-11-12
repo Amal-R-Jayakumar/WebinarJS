@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 
 var LiveSchema = new mongoose.Schema({
 	name: String,
+	desc: String,
 	youtube: String,
 	date: String,
 	displayDate: String,

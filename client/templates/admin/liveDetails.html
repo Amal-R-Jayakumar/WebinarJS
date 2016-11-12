@@ -12,6 +12,11 @@
 	<input ng-show="editing" type="text" ng-model="live.name">
 </p>
 <p>
+	<b>Description: </b>
+	<span ng-show="!editing">{{ live.desc }}</span>
+	<input ng-show="editing" type="text" ng-model="live.desc">
+</p>
+<p>
 	<b>Youtube ID: </b>
 	<span ng-show="!editing">{{ live.youtube || 'Non spécifié' }}</span>
 	<input ng-show="editing" type="text" ng-model="live.youtube">
