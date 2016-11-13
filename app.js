@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var admin = require('./routes/admin');
 var live = require('./routes/live');
+var index = require('./routes/index');
 var apiLive = require('./routes/api/live');
 var apiChat = require('./routes/api/chat');
 
@@ -41,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/admin/', admin);
 app.use('/live', live);
+app.use('/', index);
 app.use('/api/live', apiLive);
 app.use('/api/chat', apiChat);
 

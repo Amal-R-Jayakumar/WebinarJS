@@ -43,7 +43,8 @@
     				files: [
 						{src: ['client/templates/admin/lives.html'], dest: 'public/templates/admin/lives.html'},
 						{src: ['client/templates/admin/liveDetails.html'], dest: 'public/templates/admin/liveDetails.html'},
-						{src: ['client/templates/live/liveDisplay.html'], dest: 'public/templates/live/liveDisplay.html'},
+						{src: ['client/templates/live/liveDisplay.html'], dest: 'public/templates/live/liveDisplay.html'},						
+						{src: ['client/templates/index.html'], dest: 'public/templates/index.html'},
 					]
 				},
 
@@ -72,6 +73,16 @@
             			ext: '.js',
             			extDot: 'last'
         			}]
+    			},
+				ngIndex: {
+        			files: [{
+            			expand: true,
+            			cwd: 'client/js/index',
+            			src: ['*.js'],
+            			dest: 'public/js/index',
+            			ext: '.js',
+            			extDot: 'last'
+        			}]
     			}
 			},
 
@@ -84,6 +95,10 @@
 				ngLive: {
         			src: ['./public/js/live/*.js'],
         			dest: './public/js/live.js'
+    			},
+				ngIndex: {
+        			src: ['./public/js/index/*.js'],
+        			dest: './public/js/index.js'
     			},
 			},
 
@@ -105,7 +120,9 @@
     			client: {
       				files: {
         				'public/js/admin.min.js': ['public/js/admin.js'],
-        				'public/js/live.min.js': ['public/js/live.js']
+        				'public/js/live.min.js': ['public/js/live.js'],
+        				'public/js/index.min.js': ['public/js/index.js'],
+						
       				}
     			}
   			},

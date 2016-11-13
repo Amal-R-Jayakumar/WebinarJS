@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET admin page. */
+/* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('admin/admin', { title: 'WebinarJS Admin' });
+  res.render('index', { title: 'WebinarJS' });
 });
 
 module.exports = router;

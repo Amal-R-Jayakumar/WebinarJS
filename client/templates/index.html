@@ -1,0 +1,17 @@
+<h1>Webinaires</h1>
+<div ng-controller="controller">
+    <div class="container">
+        <div ng-repeat="live in lives">
+            <div class="live">
+                <div class="info">
+                    <h3 class="name">{{ live.name }}</h3>
+                    <div class="desc">
+                        <p>{{ live.desc }}</p>
+                    </div>
+                    <!-- date Here -->
+                </div>
+                <div class="presenter"> <img src="{{ live.imageAnimator }}" </div>
+                </div>
+            </div>
+        </div>
+    </div>

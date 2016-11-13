@@ -1,0 +1,45 @@
+.live .desc {
+    border-bottom: 0px;
+    color: #999;
+    margin: 0;
+}
+
+.live {
+    display: flex;
+    flex-direction: row;
+    border-bottom: #eee 1px solid;
+    padding: 5px 15px;
+    height: 70px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    width: 500px; 
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    border: #eee 1px solid;
+    border-bottom: 0px;
+    margin: 15px;
+    padding: 10px;  
+    padding-bottom: 0px;
+}
+
+.live h3 {
+    color: #444;
+    font-size: 14px;
+    margin: 0;
+}
+
+.live img {
+    max-width: 50px;
+    max-height: auto;
+    border-radius: 50%;
+}
+
+.presenter {
+    margin-left: 100px
+}
