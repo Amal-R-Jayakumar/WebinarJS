@@ -1,6 +1,6 @@
-# ngWebinar - A MEAN stack webinar
+# WebinarJS - A MEAN stack webinar
 
-[![Build Status](https://ci.sherlockstd.io/buildStatus/icon?job=WebinarJS)](https://ci.sherlockstd.io/job/WebinarJS/)
+[![Build Status](https://travis-ci.org/SherlockStd/WebinarJS.svg?branch=master)](https://travis-ci.org/SherlockStd/WebinarJS)
 
 A clone of WebinarJam built on MEAN stack (MongoDB, ExpressJS, AngularJS, NodeJS) and Socket.io
 
