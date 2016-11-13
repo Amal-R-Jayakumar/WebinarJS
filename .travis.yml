@@ -1,10 +1,10 @@
 dist: trusty
 language: node_js
 node_js:
-    - "6"
+    "6"
 install:
-    - npm install
+    npm install
 before_script:
     - npm install -g grunt
 script:
-    - grunt build
+    grunt build
