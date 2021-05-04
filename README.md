@@ -14,7 +14,7 @@ A clone of WebinarJam built on MEAN stack (MongoDB, ExpressJS, AngularJS, NodeJS
 Clone project repo:
 
 ```bash
-git https://github.com/Alagraad/WebinarJS.git
+git clone https://github.com/Alagraad/WebinarJS.git
 ```
 
 Install dependencies:
